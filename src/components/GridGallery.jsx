@@ -3,7 +3,7 @@ import { Card } from './Card'
 
 
 export const GridGallery = ({categoria}) => {
-     console.log(categoria)
+  
     let arrayFotos = []
   
     return (
