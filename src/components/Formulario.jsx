@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormulario } from '../hooks/useFormulario';
 
+
 export const Formulario = ({ addCategoria }) => {
   const initialState = { categoria: '' };
 
@@ -8,7 +9,7 @@ export const Formulario = ({ addCategoria }) => {
   const [values, handleChange, handleSubmit, reset] = useFormulario(initialState, addCategoria);
 
   return (
-    <nav>
+    <nav className='className="vh-100 d-flex justify-content-center align-items-center'>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
