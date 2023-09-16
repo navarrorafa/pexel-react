@@ -10,6 +10,8 @@ export const BuscadorFotos = () => {
     if (categoria && !arrayCat.includes(categoria)) {
       setArrayCat((prevCats) => [categoria, ...prevCats]);
     }
+
+    
   };
 
   return (
