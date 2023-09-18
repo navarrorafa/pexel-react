@@ -1,44 +1,46 @@
 import { useState, useEffect } from 'react';
 import { getImg } from '../helpers/getImg';
 
-export const useFetch = (categoria) => {
+export const useFetch = (categoria, page) => {
   const [state, setState] = useState({
     data: null,
     loading: false, 
     error: null
   });
 
-  useEffect(() => {
-    const fetchImages = async () => {  
-      if (categoria) {
-        setState(prevState => ({ ...prevState, loading: true }));
-       
-        try {
-          const data = await getImg(categoria); 
-      
-        
-          if(data && data.fotos) {
-            setState({
-              data: data.fotos,
-              loading: false,
-              error: null
-            });
-          } else {
-            throw new Error('No se encontraron fotos');
-          }
-
-        } catch (error) {
+  const fetchImages = async () => {  
+    if (categoria) {
+      setState(prevState => ({ ...prevState, loading: true }));
+     
+      try {
+        const data = await getImg(categoria,page); 
+    
+            
+        if(data && data.fotos) {
           setState({
-            data: null,
+            data: data.fotos,
             loading: false,
-            error: error.message
+            error: null
           });
+        } else {
+          throw new Error('No se encontraron fotos');
         }
+
+      } catch (error) {
+        setState({
+          data: null,
+          loading: false,
+          error: error.message
+        });
       }
-    };
+    }
+  };
+
+  useEffect(() => {
+    
 
     fetchImages(); 
-  }, [categoria]);
+  }, [categoria,page]);
 
   return state;
 };

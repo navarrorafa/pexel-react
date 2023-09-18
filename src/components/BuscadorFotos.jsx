@@ -6,6 +6,7 @@ import { Formulario } from './Formulario';
 export const BuscadorFotos = () => {
   const [arrayCat, setArrayCat] = useState([]);
 
+
   const addCategoria = (categoria) => {
     if (categoria && !arrayCat.includes(categoria)) {
       setArrayCat((prevCats) => [categoria, ...prevCats]);
